@@ -229,7 +229,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyCustomMenuHandler.cs">
+    <Compile Include="CustomMenuHandler.cs">
       <Generator>MSBuild:Compile</Generator>
     </Compile>
     <Compile Include="Program.cs" />
