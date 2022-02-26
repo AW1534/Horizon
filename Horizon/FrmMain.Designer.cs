@@ -26,10 +26,10 @@ namespace Horizon {
         /// </summary>
         private void InitializeComponent() {
             this.txtUrl = new System.Windows.Forms.TextBox();
-            this.pContainer = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnFwd = new System.Windows.Forms.Button();
             this.btnRld = new System.Windows.Forms.Button();
+            this.pContainer = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // txtUrl
@@ -44,16 +44,6 @@ namespace Horizon {
             this.txtUrl.Enter += new System.EventHandler(this.TxtUrl_Click);
             this.txtUrl.GotFocus += new System.EventHandler(this.TxtUrl_GotFocus);
             this.txtUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUrl_KeyPress);
-            // 
-            // pContainer
-            // 
-            this.pContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pContainer.Location = new System.Drawing.Point(-2, 38);
-            this.pContainer.Name = "pContainer";
-            this.pContainer.Size = new System.Drawing.Size(787, 425);
-            this.pContainer.TabIndex = 2;
             // 
             // btnBack
             // 
@@ -84,16 +74,27 @@ namespace Horizon {
             this.btnRld.UseVisualStyleBackColor = true;
             this.btnRld.Click += new System.EventHandler(this.btnRld_Click);
             // 
+            // pContainer
+            // 
+            this.pContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pContainer.Location = new System.Drawing.Point(0, 38);
+            this.pContainer.Name = "pContainer";
+            this.pContainer.Size = new System.Drawing.Size(787, 424);
+            this.pContainer.TabIndex = 6;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.pContainer);
             this.Controls.Add(this.btnRld);
             this.Controls.Add(this.btnFwd);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.pContainer);
             this.Controls.Add(this.txtUrl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -118,10 +119,10 @@ namespace Horizon {
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtUrl;
-        private System.Windows.Forms.Panel pContainer;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnFwd;
-        private System.Windows.Forms.Button btnRld;
+        public System.Windows.Forms.TextBox txtUrl;
+        public System.Windows.Forms.Button btnBack;
+        public System.Windows.Forms.Button btnFwd;
+        public System.Windows.Forms.Button btnRld;
+        public System.Windows.Forms.Panel pContainer;
     }
 }

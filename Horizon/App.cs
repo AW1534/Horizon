@@ -2,13 +2,13 @@
 using CefSharp.WinForms;
 using EasyTabs;
 using Horizon.Handlers;
+using Syroot.Windows.IO;
 using System;
 using System.IO;
-using System.Net;
 using System.Windows.Forms;
 
 namespace Horizon {
-    internal static class Horizon {
+    internal static class App {
         [Serializable]
         public class engine {
             public string name = "";
@@ -32,16 +32,16 @@ namespace Horizon {
         [Serializable]
         internal static class horizonSettings  {
             public static engine engine = engines.DUCKDUCKGO;
+            public static string downloadPath = new KnownFolder(KnownFolderType.Downloads).Path;
         }
 
         public static string dir;
         public static string newTabPage = dir + "/IncludeFiles/Pages/NewTab.html";
         public static CefSettings cefSettings = new CefSettings();
+        public static IDownloadHandler downloadHandler = new DownloadHandler();
 
         [STAThread]
         static void Main() {
-            DisplayHandler displayHandler = new DisplayHandler();
-
             dir = Directory.GetCurrentDirectory();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

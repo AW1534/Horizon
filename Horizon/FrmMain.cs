@@ -10,7 +10,11 @@ using System.Windows.Forms;
 namespace Horizon {
     public partial class FrmMain : Form {
         ChromiumWebBrowser browser;
-        Uri newTabUrl = new Uri("file://" + Horizon.newTabPage);
+        Uri newTabUrl = new Uri("file://" + App.newTabPage);
+
+        public FrmMain(ChromiumWebBrowser browser = null) {
+            this.browser = browser;
+        }
 
         public FrmMain() {
             InitializeComponent();
@@ -18,7 +22,11 @@ namespace Horizon {
 
 
         private void FrmMain_Load(object sender, EventArgs e) {
-            browser = new ChromiumWebBrowser(newTabUrl.ToString());
+            if (browser == null) {
+                browser = new ChromiumWebBrowser(newTabUrl.ToString());
+            }
+
+            browser.DownloadHandler = App.downloadHandler;
 
             browser.Dock = DockStyle.Fill;
             this.pContainer.Controls.Add(browser);
@@ -36,7 +44,9 @@ namespace Horizon {
 
         private void Browser_AddressChanged(object sender, AddressChangedEventArgs e) {
             if (e.Address.ToString().ToLower() == newTabUrl.ToString().ToLower()) {
-
+                this.Invoke(new Action(() => {
+                    txtUrl.Focus();
+                }));
             }
             else {
                 this.BeginInvoke(new MethodInvoker(() => {
@@ -77,12 +87,12 @@ namespace Horizon {
         private void go(object sender, EventArgs e) {
             String text = txtUrl.Text;
 
-            if (Horizon.isUrl(text)) {
+            if (App.isUrl(text)) {
 
-                text = Horizon.FixUrl(text);
+                text = App.FixUrl(text);
             }
             else {
-                text = Horizon.horizonSettings.engine.url.Replace("$(query)", text);
+                text = App.horizonSettings.engine.url.Replace("$(query)", text);
                 Console.WriteLine(text);
             }
 
@@ -97,6 +107,7 @@ namespace Horizon {
 
         private void txtUrl_KeyPress(object sender, KeyEventArgs e) {
             if (e.KeyValue == (char)13) {
+                pContainer.Focus();
                 go(sender, e);
             }
         }
