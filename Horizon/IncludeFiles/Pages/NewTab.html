@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>New Tab</title>
+</head>
+<body class="background">
+    <!-- Font Awesome, for the search icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+            font-family: 'Monserrat', sans-serif;
+            color: white;
+            font-size: 7.5em;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .thumbnail {
+            background-color: #C4C4C4;
+            margin: auto;
+            width: 10%;
+            height: 100px;
+            border-radius: 5px;
+        }
+
+        .background {
+            background-color: #303030;
+        }
+
+        .new-tab {
+            margin: auto;
+            width: 40%;
+        }
+
+        .no-idea {
+            width: 60%;
+            background: white;
+            border-radius: 5px;
+            margin-top: 9em;
+            max-height: 20px;
+        }
+
+        .search {
+            background-color: #C4C4C4;
+            margin: auto;
+            margin-bottom: 0.5em;
+            width: 100%;
+            border-radius: 18px 0 0 18px;
+            font-size: 5em;
+            padding-left: 20px;
+        }
+
+        .search:focus {
+            outline: none;
+        }
+
+        .main {
+            padding-top: 5%;
+            width: 90%;
+            margin: auto;
+        }
+
+        .icon {
+            background-color: #042D30;
+            padding: 10px;
+            margin-bottom: auto;
+            border-style: solid;
+            border-radius: 0 18px 18px 0;
+            font-size: 4em;
+            color: white;
+            border-color: black;
+        }
+
+        @media (max-width: 1385px) {
+            .no-idea {
+                display: none;
+            }
+
+            .main {
+                padding-top: 0%;
+            }
+
+            .new-tab {
+                margin: auto;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    <div class="main">
+        <div class="flex">
+            <div class="new-tab">
+                <h1>New Tab</h1>
+            </div>
+            <div class="no-idea"> <!-- No idea what this is? Just a white line? --> </div>
+        </div>
+        <form class="flex" id="form" action="https://duckduckgo.com">
+            <input name="q" class="search" type="text" id="search" placeholder="Search DuckDuckGo" autofocus/>
+            <button class="icon" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+
+        <div class="flex">
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+        </div>
+    </div>
+
+
+</body>
+</html>
