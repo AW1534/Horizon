@@ -27,6 +27,9 @@ namespace Horizon {
             public static engine DUCKDUCKGO = new engine("DuckDuckGo", "https://duckduckgo.com/?q=$(query)");
             public static engine ECOSIA     = new engine("Ecosia",     "https://www.ecosia.org/search?q=$(query)");
             public static engine GOOGLE     = new engine("Google",     "https://google.com/search?q=$(query)");
+
+            // You have no reason to use the following ones but...
+            public static engine YOUTUBE    = new engine("YouTube",    "https://youtube.com/search?q=$(query)");
         }
 
         [Serializable]
@@ -36,19 +39,28 @@ namespace Horizon {
         }
 
         public static string dir;
-        public static string newTabPage = dir + "/IncludeFiles/Pages/NewTab.html";
+        public static string newTabPage;
         public static CefSettings cefSettings = new CefSettings();
         public static IDownloadHandler downloadHandler = new DownloadHandler();
+        public static string appPath = new KnownFolder(KnownFolderType.RoamingAppData).Path + "/Horizon/";
 
         [STAThread]
         static void Main() {
             dir = Directory.GetCurrentDirectory();
+            newTabPage = appPath + "/IncludeFiles/Pages/NewTab.html";
+            Console.WriteLine(newTabPage);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            CefSharpSettings.ShutdownOnExit = false;
+
             cefSettings.CachePath = dir + "/cache";
             cefSettings.EnablePrintPreview();
-            CefSharpSettings.ShutdownOnExit = false;
+            cefSettings.RegisterScheme(new CefCustomScheme {
+                SchemeName = "horizon",
+                SchemeHandlerFactory = new Handlers.SchemeHandlerFactory()
+            });
 
             Cef.Initialize(cefSettings);
 
@@ -68,7 +80,7 @@ namespace Horizon {
         }
 
         public static bool isUrl(String text) {
-            return (text.Contains(".") && !text.Contains(" "));
+            return (text.Contains(".") || text.Contains("://")) && !text.Contains(" ");
         }
 
         public static String FixUrl(String text, bool trim = true) {
