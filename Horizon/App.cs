@@ -42,12 +42,11 @@ namespace Horizon {
         public static string newTabPage;
         public static CefSettings cefSettings = new CefSettings();
         public static IDownloadHandler downloadHandler = new DownloadHandler();
-        public static string appPath = new KnownFolder(KnownFolderType.RoamingAppData).Path + "/Horizon/";
 
         [STAThread]
         static void Main() {
             dir = Directory.GetCurrentDirectory();
-            newTabPage = appPath + "/IncludeFiles/Pages/NewTab.html";
+            newTabPage = dir + "/IncludeFiles/Pages/NewTab.html";
             Console.WriteLine(newTabPage);
 
             Application.EnableVisualStyles();

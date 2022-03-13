@@ -27,6 +27,8 @@ namespace Launcher {
 
             start.WindowStyle = ProcessWindowStyle.Hidden;
             start.CreateNoWindow = true;
+            start.WorkingDirectory = installDir;
+
             int exitCode;
 
             int run() {

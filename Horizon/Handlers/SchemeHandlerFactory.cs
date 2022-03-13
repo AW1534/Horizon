@@ -11,10 +11,9 @@ namespace Horizon.Handlers {
         private static readonly IDictionary<string, string> ResourceDictionary;
 
 		static SchemeHandlerFactory() {
-			Console.WriteLine(App.appPath + "/IncludeFiles/Pages/NewTab.html" + " jsjsjdjdjdjd");
 			ResourceDictionary = new Dictionary<string, string>
 			{
-				{ "/newtab", App.appPath + "/IncludeFiles/Pages/NewTab.html" },
+				{ "/newtab", App.dir + "/IncludeFiles/Pages/NewTab.html" },
 			};
 		}
 
