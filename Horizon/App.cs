@@ -42,6 +42,7 @@ namespace Horizon {
         public static string newTabPage;
         public static CefSettings cefSettings = new CefSettings();
         public static IDownloadHandler downloadHandler = new DownloadHandler();
+        internal static IRequestHandler requestHandler = new RequestHandler();
 
         [STAThread]
         static void Main() {

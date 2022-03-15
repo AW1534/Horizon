@@ -27,6 +27,7 @@ namespace Horizon {
             }
 
             browser.DownloadHandler = App.downloadHandler;
+            browser.RequestHandler = App.requestHandler;
 
             browser.Dock = DockStyle.Fill;
             this.pContainer.Controls.Add(browser);

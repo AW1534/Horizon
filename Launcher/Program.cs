@@ -5,10 +5,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using IWshRuntimeLibrary;
 using File = System.IO.File;
-using System.Reflection;
 
 namespace Launcher {
     internal static class Program {
@@ -29,8 +27,10 @@ namespace Launcher {
             start.CreateNoWindow = true;
             start.WorkingDirectory = installDir;
 
-            int exitCode;
 
+
+            //TODO: In future, this app should be not just an installer but a sort of "proxy" for running Horizon. it will automatically update Horizon when run, and will have a crash handler to report crashes.
+            int exitCode;
             int run() {
                 using (Process proc = Process.Start(start)) {
                     proc.WaitForExit();

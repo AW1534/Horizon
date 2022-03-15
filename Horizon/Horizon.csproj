@@ -172,6 +172,8 @@
     </Compile>
     <Compile Include="Handlers\DownloadHandler.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="Handlers\FindHandler.cs" />
+    <Compile Include="Handlers\RequestHandler.cs" />
     <Compile Include="Handlers\SchemeHandlerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
